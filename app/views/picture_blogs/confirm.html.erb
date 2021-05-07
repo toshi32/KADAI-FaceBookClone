@@ -1,2 +1,9 @@
-<h1>PictureBlogs#confirm</h1>
-<p>Find me in app/views/picture_blogs/confirm.html.erb</p>
+<h3>以下の内容で、投稿する。</h3>
+<%= form_with(model: @picture_blog, url: picture_blogs_path, local: true) do |form| %>
+  <%= form.hidden_field :title %>
+  <%= form.hidden_field :content, value: current_user.id  %>
+  <p>タイトル:<%= @picture_blog.title %></p>
+  <p>本文:<%= @picture_blog.content %></p>
+  <%= form.submit  "登録する" %>
+  <%= form.submit "戻る", name: 'back' %>
+<% end %>
